@@ -330,6 +330,19 @@ class Settings {
 				'title' => esc_html__( 'Set WP_DEBUG to true.', 'wp-debugging' ),
 			]
 		);
+		/* Add the ET_Debug as an option for debugging the Email Opt-in module and Bloom Forms on FE */
+		add_settings_field(
+			'et_debug',
+			null,
+			[ $this, 'checkbox_setting' ],
+			'wp_debugging',
+			'wp_debugging',
+			[
+				'id'    => 'et_debug',
+				'title' => esc_html__( 'Set ET_DEBUG to true.', 'wp-debugging' ),
+				'class' => version_compare( get_bloginfo( 'version' ), '5.2', '>=' ) ? '' : 'hidden',
+			]
+		);
 
 		add_settings_field(
 			'wp_debug_display',
